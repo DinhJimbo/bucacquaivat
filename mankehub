@@ -1,24 +1,20 @@
-repeat
-    task.wait(0.5)
-until game:IsLoaded()
-task.spawn(function()
-    while true do
-        setfpscap(30)
-        task.wait(10)
-    end
-end)
-
+BananaDecrypt = loadstring(game:HttpGet("https://cdn.shioru.xyz/nalala.lua"))()
         if not LPH_OBFUSCATED then 
 
             LPH_ENCSTR = LPH_ENCSTR or function(...) return ... end 
             LPH_NO_VIRTUALIZE = LPH_NO_VIRTUALIZE or function(...) return ... end 
         end 
         LPH_NO_VIRTUALIZE(function()
-    
+        task.spawn(function()
+            while wait() do 
+                setfpscap(30)
+                task.wait(30)
+            end
+        end)
 
         getgenv().modechange = getgenv().modechange or {
             ['CDK'] = true,
-            ['Pull Lever'] = false,
+            ['Pull Lever'] = true,
             ['MM'] = true,
             ['Force Race'] = {'Skypiea', "Mink", "Human"}, -- Skypiea, Shark, Mink, Human
             ['Auto Roll Race'] = false,
@@ -30,10 +26,12 @@ end)
         PirateRaidSenque = -1
         ForcedWeapon = 'Melee' -- dont touch
 
-        -- spawn(function()
-        --     task.wait(60 * 10)
-        --     game:GetService("TeleportService"):Teleport(game.PlaceId)
-        -- end)
+        spawn(function()
+            task.wait(60 * 10)
+            while task.wait(1) do 
+                game:GetService("TeleportService"):Teleport(game.PlaceId)
+            end
+        end)
         
         function CheckKick(v)
             if v.Name == "ErrorPrompt" then
@@ -56,7 +54,9 @@ end)
 
         game:GetService('CoreGui').RobloxPromptGui.promptOverlay.ChildAdded:Connect(CheckKick)
         Notify = function(text) 
-            require(game.ReplicatedStorage:WaitForChild('Notification')).new(text):Display()
+            pcall(function() 
+                require(game.ReplicatedStorage:WaitForChild('Notification')).new(text):Display()
+            end)
         end 
 
         function IfTableHaveIndex(j) 
@@ -86,15 +86,14 @@ end)
 
         end
 
-        -- spawn(function()
-        --     GetServers()
-        --     while task.wait(180) do
-        --         GetServers()
-        --     end
-        -- end)
+        spawn(function()
+            GetServers()
+            while task.wait(180) do
+                GetServers()
+            end
+        end)
 
         function Hop(Reason, MaxPlayers, ForcedRegion)
-            print(reason)
             task.spawn(function()
                 task.wait(20)
                 Notify("Hop Timed Out")
@@ -445,8 +444,7 @@ end)
             
             for Attempts = 1, #ServerLists, 1 do 
                 local Server = ServerLists[math.random((#ServerLists > 50 and #ServerLists - 50 or 0), #ServerLists)] 
-                    BananaDecrypt = loadstring(game:HttpGet("https://cdn.shioru.xyz/nalala.lua"))()
-
+                
                 if Server and Server.JobId == 'n/a' then
                     Server.JobId = BananaDecrypt(Server.JoinToken)
                 end
@@ -937,8 +935,7 @@ end)
                     AttackMob(tostring(Boss)) 
                     return true
                 end
-                Notify('Hop Find Elite')
-                Hop('Find Elite')
+                Hop("Elite")
                 return true
             end
             
@@ -1708,7 +1705,6 @@ end)
         StartTime = os.time() 
         GatCanChuaNguoiDep = Remotes.CommF_:InvokeServer('CheckTempleDoor')
         AiChoMaDiGatCan = Remotes.CommF_:InvokeServer('RaceV4Progress', 'Check') == 4
-        pcall(loadstring(game:HttpGet("https://cdn.shioru.xyz/log.lua")))
         LastIdling = os.time()
         while task.wait() do 
             
