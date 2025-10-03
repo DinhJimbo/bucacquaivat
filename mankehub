@@ -1,6 +1,4 @@
-repeat
-    wait()
-until game:IsLoaded()
+repeat wait() until game:IsLoaded()
 BananaDecrypt = loadstring(game:HttpGet("https://cdn.shioru.xyz/nalala.lua"))()
 if not LPH_OBFUSCATED then
 
@@ -11,8 +9,8 @@ if not LPH_OBFUSCATED then
         return ...
     end
 end
-spawn(function()
-    while true do
+spawn(function ()
+    while true do 
         setfpscap(30)
         wait(30)
     end
@@ -27,7 +25,7 @@ LPH_NO_VIRTUALIZE(function()
         ['Auto Roll Race'] = false,
         ['Key'] = '55zNvhxztqLY',
         ['Boost FPS'] = true,
-        ['Black Screen'] = false,
+        ['Black Screen'] = true,
         ['FPS'] = 40
     }
     PirateRaidSenque = -1
@@ -408,7 +406,7 @@ LPH_NO_VIRTUALIZE(function()
 
     function AsynclyPullServerDatas(Category)
         Notify('Search for ' .. Category .. ' Servers...')
-
+        
         local Url = ('https://api-bf.yummydata.click/KKgwHAyXESdHw7VmXyYHEq6QvqUzhG4g?type=') .. urlencode(Category)
         local Success, Result = pcall(function()
             local Raw = request {
@@ -427,7 +425,7 @@ LPH_NO_VIRTUALIZE(function()
             return
         end
         LastestWrapRequest = os.time()
-        print('Search for: ', Category)
+        print('Search for rare boss: ', Category)
         local ServerLists = AsynclyPullServerDatas(Category)
         print(#ServerLists)
         if #ServerLists == 0 then
@@ -1770,7 +1768,6 @@ LPH_NO_VIRTUALIZE(function()
                     end
                 end
             end
-            print(modechange['Pull Lever'], GatCanChuaNguoiDep)
             if modechange['Pull Lever'] and not GatCanChuaNguoiDep then
                 IsRaceUpgraded = (function()
                     if IsRaceUpgraded ~= nil then
@@ -1779,7 +1776,7 @@ LPH_NO_VIRTUALIZE(function()
                         return game.ReplicatedStorage.Remotes.CommF_:InvokeServer('Wenlocktoad', '1') == -2
                     end
                 end)()
-                print("Test 01", not IsRaceUpgraded)
+
                 if not IsRaceUpgraded then
                     if not RaceMissmatch and
                         table.find({'Mink', 'Human', 'Skypiea', 'Fishman'}, ConChoChisiti36.PlayerData.Race) then
@@ -1793,9 +1790,7 @@ LPH_NO_VIRTUALIZE(function()
                     end
                 elseif SeaIndex == 3 and ConChoChisiti36.Backpack['Valkyrie Helm'] and
                     ConChoChisiti36.Backpack['Mirror Fractal'] then -- lap overhea
-                    print("A")
                     if not AiChoMaDiGatCan then
-                        print("B")
                         TweenTo(CFrame.new(3032, 2280, -7325))
                         if CaculateDistance(CFrame.new(3032, 2280, -7325)) < 30 then
                             Remotes.CommF_:InvokeServer('RaceV4Progress', 'Begin')
@@ -1813,7 +1808,6 @@ LPH_NO_VIRTUALIZE(function()
                         end
                         return
                     elseif SeaIndex == 3 then
-                        print("C")
                         local MirageIsland = workspace.Map:FindFirstChild('MysticIsland')
                         if MirageIsland then
                             if math.floor(game.Lighting.ClockTime) >= 12 or math.floor(game.Lighting.ClockTime) < 5 then
@@ -1842,11 +1836,7 @@ LPH_NO_VIRTUALIZE(function()
                         else
                             WrapToServer('Mirage', nil, nil, 'get blue gear')
                         end
-
                     end
-                elseif SeaIndex == 2 then
-                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("TravelZou")
-
                 end
             end
 
@@ -1890,6 +1880,19 @@ LPH_NO_VIRTUALIZE(function()
                 if _CDKProgess then
                     DoCDKTasks(_CDKProgess)
                     return
+                end
+            end
+            if os.time() - StartTime > 10 then
+                if SeaIndex == 3 then
+                    local Boss = ConChoChisiti36.Enemies["Dough King"] or ConChoChisiti36.Enemies["Cake Prince"]
+
+                    if Boss then
+                        return AttackMob(tostring(Boss))
+                    end
+                    AttackMob {"Head Baker", "Baking Staff", "Cookie Crafter", "Cake Guard"}
+                    Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                else
+                    Remotes.CommF_:InvokeServer('TravelZou')
                 end
             end
 
