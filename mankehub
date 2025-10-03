@@ -21,7 +21,7 @@ LPH_NO_VIRTUALIZE(function()
 
     getgenv().modechange = getgenv().modechange or {
         ['CDK'] = true,
-        ['Pull Lever'] = true,
+        ['Pull Lever'] = false,
         ['MM'] = true,
         ['Force Race'] = {'Skypiea', "Mink", "Human"}, -- Skypiea, Shark, Mink, Human
         ['Auto Roll Race'] = false,
