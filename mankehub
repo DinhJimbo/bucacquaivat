@@ -27,8 +27,8 @@ LPH_NO_VIRTUALIZE(function()
         ['Auto Roll Race'] = false,
         ['Key'] = '55zNvhxztqLY',
         ['Boost FPS'] = true,
-        ['Black Screen'] = true,
-        ['FPS'] = 20
+        ['Black Screen'] = false,
+        ['FPS'] = 40
     }
     PirateRaidSenque = -1
     ForcedWeapon = 'Melee' -- dont touch
